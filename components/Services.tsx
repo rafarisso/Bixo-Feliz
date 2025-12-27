@@ -5,7 +5,7 @@ import { Service } from '../types';
 const Services: React.FC = () => {
   const services: Service[] = [
     {
-      id: '1',
+      id: 's1',
       title: 'Banho e Tosa',
       description: 'Equipamentos modernos e profissionais que amam o que fazem. Seu pet cheiroso e relaxado.',
       imageUrl: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=400',
@@ -16,7 +16,7 @@ const Services: React.FC = () => {
       )
     },
     {
-      id: '2',
+      id: 's2',
       title: 'Venda de Rações',
       description: 'As melhores marcas premium do mercado para garantir a saúde e vitalidade do seu animal.',
       imageUrl: 'https://images.unsplash.com/photo-1589924691106-073b138d0f77?auto=format&fit=crop&q=80&w=400',
@@ -27,7 +27,7 @@ const Services: React.FC = () => {
       )
     },
     {
-      id: '3',
+      id: 's3',
       title: 'Venda de Animais',
       description: 'Filhotes de cães, gatos e outros amiguinhos. Todos acompanhados por veterinários.',
       imageUrl: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=400',
@@ -40,7 +40,10 @@ const Services: React.FC = () => {
   ];
 
   const handleScrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

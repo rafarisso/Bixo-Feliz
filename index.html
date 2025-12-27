@@ -16,6 +16,14 @@
         .font-fredoka {
             font-family: 'Fredoka', sans-serif;
         }
+        /* Garantia extra de que botões de nav não tenham estilos padrão de botão */
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font: inherit;
+        }
     </style>
 <script type="importmap">
 {
@@ -30,5 +38,7 @@
 </head>
 <body class="bg-gray-50">
     <div id="root"></div>
+    <!-- Ponto de entrada crucial para o deploy funcionar corretamente -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>

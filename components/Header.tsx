@@ -12,8 +12,7 @@ const Header: React.FC = () => {
     { label: 'Contato', id: 'contact' },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
+  const handleNavClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -24,8 +23,8 @@ const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-orange-50">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div 
-          className="flex items-center space-x-2 cursor-pointer" 
+        <button 
+          className="flex items-center space-x-2 text-left" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className="bg-orange-500 p-2 rounded-full">
@@ -34,27 +33,25 @@ const Header: React.FC = () => {
             </svg>
           </div>
           <span className="text-2xl font-fredoka font-bold text-orange-600">Bixo Feliz</span>
-        </div>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-8 items-center">
           {navItems.map((item) => (
-            <a 
+            <button 
               key={item.id} 
-              href={`#${item.id}`} 
-              onClick={(e) => handleNavClick(e, item.id)}
+              onClick={() => handleNavClick(item.id)}
               className="text-gray-600 hover:text-orange-500 font-medium transition-colors"
             >
               {item.label}
-            </a>
+            </button>
           ))}
-          <a 
-            href="https://wa.me/5531987654321" 
-            target="_blank" 
-            className="bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600 transition-all flex items-center shadow-md hover:shadow-lg"
+          <button 
+            onClick={() => window.open('https://wa.me/5531987654321', '_blank')}
+            className="bg-green-500 text-white px-6 py-2 rounded-full font-bold hover:bg-green-600 transition-all flex items-center shadow-md hover:shadow-lg active:scale-95"
           >
              <span>Agendar Banho</span>
-          </a>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -67,24 +64,19 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 py-6 flex flex-col space-y-6 px-4 shadow-xl animate-in slide-in-from-top">
+        <div className="md:hidden bg-white border-t border-gray-100 py-6 flex flex-col space-y-6 px-4 shadow-xl">
           {navItems.map((item) => (
-            <a 
+            <button 
               key={item.id} 
-              href={`#${item.id}`} 
-              className="text-gray-700 font-bold text-lg border-b border-gray-50 pb-2"
-              onClick={(e) => handleNavClick(e, item.id)}
+              className="text-left text-gray-700 font-bold text-lg border-b border-gray-50 pb-2"
+              onClick={() => handleNavClick(item.id)}
             >
               {item.label}
-            </a>
+            </button>
           ))}
           <button 
-             onClick={() => {
-                const contact = document.getElementById('contact');
-                contact?.scrollIntoView({ behavior: 'smooth' });
-                setIsOpen(false);
-             }}
-             className="bg-orange-500 text-white text-center py-4 rounded-xl font-bold shadow-lg"
+             onClick={() => handleNavClick('contact')}
+             className="bg-orange-500 text-white text-center py-4 rounded-xl font-bold shadow-lg active:scale-95"
           >
             Agendar Agora
           </button>
