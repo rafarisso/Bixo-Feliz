@@ -1,0 +1,8 @@
+{
+  "name": "Bixo Feliz Petshop",
+  "description": "Um site moderno, intuitivo e responsivo para o Petshop Bixo Feliz, com assistente virtual para cuidados com pets.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
